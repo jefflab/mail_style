@@ -1,3 +1,17 @@
+h1. Warning, this is a fork
+
+You should probably be using the original for now:  http://github.com/purify/mail_style
+
+h2. Things that changed in this fork so far:
+
+    * Use subclass instead of alias_method_chain on ActionMailer
+    * Programatically generate text/plain version of multipart html email
+        * Note: this is currently just a rip-off of code from premailer http://github.com/alexdunae/premailer/
+
+h2. Goals
+    * Wrap specs around all the new code
+    * refactor and fix html_to_plain_text code
+
 h1. MailStyle
 
 MailStyle tries to make sending HTML emails a little less painful.
