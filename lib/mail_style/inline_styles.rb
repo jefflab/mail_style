@@ -4,13 +4,10 @@ require 'css_parser'
 
 module MailStyle
   module InlineStyles
+
     DOCTYPE = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">'
 
     module InstanceMethods
-      def create_mail_with_inline_styles
-        write_inline_styles
-        create_mail_without_inline_styles
-      end
 
       protected
 
@@ -202,10 +199,7 @@ module MailStyle
       receiver.send :include, InstanceMethods
       receiver.class_eval do
         adv_attr_accessor :css
-        alias_method_chain :create_mail, :inline_styles
       end
     end
   end
 end
-
-ActionMailer::Base.send :include, MailStyle::InlineStyles
