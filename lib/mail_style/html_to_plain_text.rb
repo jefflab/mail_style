@@ -62,9 +62,8 @@ module MailStyle
       txt.gsub!(/<\/p>/i, "\n\n")
       txt.gsub!(/<br[\/ ]*>/i, "\n")
 
-      # THIS IS THE LINE WHERE THE PATCH DIFFERS FROM THE ORIGINAL
       # strip remaining tags
-      txt.gsub!(/<[^%]\/?[^>]*[^%]?>/, '')
+      txt.gsub!(/<\/?[^>]*>/, '')
 
       # wrap text
       txt = r.format(('[' * line_length), txt)
