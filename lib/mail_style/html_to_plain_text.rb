@@ -66,7 +66,7 @@ module MailStyle
       txt.gsub!(/<\/?[^>]*>/, '')
 
       # wrap text
-      txt = r.format(('[' * line_length), txt)
+#      txt = r.format(('[' * line_length), txt)
 
       # remove linefeeds (\r\n and \r -> \n)
       txt.gsub!(/\r\n?/, "\n")
