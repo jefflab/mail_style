@@ -5,6 +5,15 @@ require 'spec'
 require 'action_mailer'
 require 'mail_style'
 
+RAILS_ROOT = File.join(File.dirname(__FILE__), '../../../../')
+
+# Set ActionMailer stuff
+HtmlMailer.template_root = '.'
+HtmlMailer.delivery_method = :test
+HtmlMailer.perform_deliveries = true
+HtmlMailer.deliveries = []
+HtmlMailer.default_url_options[:host] = "example.com"
+
 def flatten_parts(parts)
   nested = !parts.empty? ? parts.map { |p| flatten_parts(p.parts) }.flatten : []
   [parts, nested].flatten

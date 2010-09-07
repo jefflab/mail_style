@@ -1,17 +1,8 @@
 # coding: utf-8
 require 'spec_helper'
-
-RAILS_ROOT = File.join(File.dirname(__FILE__), '../../../../')
-
-# Set ActionMailer stuff
-ActionMailer::Base.template_root = '.'
-ActionMailer::Base.delivery_method = :test
-ActionMailer::Base.perform_deliveries = true
-ActionMailer::Base.deliveries = []
-ActionMailer::Base.default_url_options[:host] = "example.com"
  
 # Test Mailer
-class TestMailer < ActionMailer::Base
+class TestMailer < HtmlMailer
   def test_multipart(css_file = nil)
     setup_email(css_file)
     content_type 'multipart/alternative'
@@ -58,7 +49,7 @@ class TestMailer < ActionMailer::Base
   
   def setup_email(css_file = nil)
     css css_file unless css_file.nil?
-    
+
     subject 'Test Multipart Email'
     recipients 'jimneath@googlemail.com'
     from 'jimneath@googlemail.com'

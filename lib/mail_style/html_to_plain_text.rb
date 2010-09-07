@@ -1,10 +1,11 @@
+require 'text/reform'
 require 'htmlentities'
 
 module MailStyle
   module HtmlToPlainText
 
     def generate_text_part
-      unless @body === String || @parts.empty?
+      unless @body === String || @parts.size != 1
         html_part = @parts.first
         @parts.unshift( ActionMailer::Part.new( :content_type => 'text/plain',
                                                 :disposition => "inline",

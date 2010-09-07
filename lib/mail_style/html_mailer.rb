@@ -5,7 +5,7 @@ class HtmlMailer < ActionMailer::Base
 
   def initialize_defaults( method_name )
     super
-    @css = mailer_name.to_sym
+    @css = mailer_name.to_sym if File.exists?( File.join(RAILS_ROOT, 'public', 'stylesheets', mailer_name) )
   end
 
   def create_mail
